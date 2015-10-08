@@ -2,5 +2,9 @@
     <string name="app_name">CIS298Assignment2</string>
 
     <string name="hello_world">Hello world!</string>
+
+    <string name="convert">Convert</string>
+
     <string name="action_settings">Settings</string>
+
 </resources>
