@@ -76,12 +76,8 @@ public class TemperatureType {
     }
 
 
-    private int mFormulaId;
 
-//----------------------------------------------------------
-  //  private double mEditTextInput;
 
-    //private double mFinalResult;
 
 
 

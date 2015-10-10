@@ -17,11 +17,6 @@ import org.w3c.dom.Text;
 
 public class TemperatureConverter extends AppCompatActivity {
 
-    private TemperatureType[] mFormulaBank = new TemperatureType[20];
-
-//    private TemperatureType1 = new TemperatureType[R.string.typ]
-
-
 
     private static final String TAG = "TemperatureConverter";
     private static final String KEY_INDEX = "index";
@@ -46,65 +41,17 @@ public class TemperatureConverter extends AppCompatActivity {
     private EditText userInputText;
 
 
-    private RadioButton fromRadioButton;
-
     private Double inputValue;
 
-   // private String value;
-
-/*    public void onRadioButtonClicked(View view){
-
-        boolean checked = ((RadioButton)view).isChecked();
-
-        switch(view.getId()){
-            case R.id.type_1:
-                if(checked){
-                    mResultTextView.setText("C");
-                }
-                break;
-            case R.id.type_2:
-                if(checked){
-                    mResultTextView.setText("F");
-                }
-                break;
-            case R.id.type_3:
-                if(checked){
-                    mResultTextView.setText("K");
-                }
-                break;
-            case R.id.type_4:
-                if(checked){
-                    mResultTextView.setText("R");
-                }
-                break;
-        }
-
-    }*/
 
 
-/*    public void test(){
-        if(mType1.isChecked()){
-            mResultTextView.setText("C");
 
-        }else if (mType2.isChecked()){
-            mResultTextView.setText("F");
-
-        }else if(mType3.isChecked()){
-            mResultTextView.setText("K");
-
-        }else if(mType4.isChecked()){
-           mResultTextView.setText("R");
-        }
-
-    }*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Log.d(TAG, "onCreate(Bundle) called");
         setContentView(R.layout.activity_temperature_converter);
-
-
 
         mResultTextView =(TextView)findViewById(R.id.result_text);
         mFormulaTextView=(TextView)findViewById(R.id.formula_text);
@@ -136,33 +83,13 @@ public class TemperatureConverter extends AppCompatActivity {
                     return;
                 }
 
-
-          /*      int selectedId = mFromRadioGroup.getCheckedRadioButtonId();
-                fromRadioButton = (RadioButton)findViewById(selectedId);
-                Toast.makeText(TemperatureConverter.this,
-                                fromRadioButton.getText(),
-                                Toast.LENGTH_SHORT).show();
-                mResultTextView.setText(fromRadioButton.getText());*/
-
-
-              //   double inputValue = Double.parseDouble(userInputText.getText().toString());
-
-
                 inputValue = Double.parseDouble(userInputText.getText().toString());
 
                 Select();
 
             }
 
-
         });
-
-
-
-
-
-
-
 
 
     }//onCreate100
@@ -171,40 +98,23 @@ public class TemperatureConverter extends AppCompatActivity {
         if(mType1.isChecked())
         {
             if(mType5.isChecked()){
-                mResultTextView.setText(String.valueOf(TemperatureType.CelsiusToCelsius(inputValue)));
+                mResultTextView.setText(String.format("%.2f", TemperatureType.CelsiusToCelsius(inputValue)));
                 mFormulaTextView.setText("Celsius = Celsius");
-
-               /* value = String.valueOf(TemperatureType.CelsiusToCelsius(inputValue));
-                mResultTextView.setText(value);*/
-
             }
 
             if(mType6.isChecked()){
-                mResultTextView.setText(String.valueOf(TemperatureType.CelsiusToFahrenheit(inputValue)));
+                mResultTextView.setText(String.format("%.2f",TemperatureType.CelsiusToFahrenheit(inputValue)));
                 mFormulaTextView.setText(" F =  C × 1.8 + 32");
-
-                /*value = String.valueOf(TemperatureType.CelsiusToFahrenheit(inputValue));
-                mResultTextView.setText(value);*/
-
-
-
             }
 
             if(mType7.isChecked()){
-                mResultTextView.setText(String.valueOf(TemperatureType.CelsiusToKelvin(inputValue)));
+                mResultTextView.setText(String.format("%.2f", TemperatureType.CelsiusToKelvin(inputValue)));
                 mFormulaTextView.setText("K = C  + 273.15");
-
-               /* value = String.valueOf(TemperatureType.CelsiusToKelvin(inputValue));
-                mResultTextView.setText(value);*/
             }
 
             if(mType8.isChecked()){
-                 mResultTextView.setText(String.valueOf(TemperatureType.CelsiusToRankin(inputValue)));
+                 mResultTextView.setText(String.format("%.2f", TemperatureType.CelsiusToRankin(inputValue)));
                  mFormulaTextView.setText("Ra =  C × 1.8 + 32 + 459.67");
-
-                /*value = String.valueOf(TemperatureType.CelsiusToRankin(inputValue));
-                mResultTextView.setText(value);*/
-
             }
 
         }
@@ -213,31 +123,23 @@ public class TemperatureConverter extends AppCompatActivity {
         if(mType2.isChecked())
         {
             if(mType5.isChecked()){
-                mResultTextView.setText(String.valueOf(TemperatureType.FahrenheitToCelsius(inputValue)));
+                mResultTextView.setText(String.format("%.2f", TemperatureType.FahrenheitToCelsius(inputValue)));
                 mFormulaTextView.setText("C = ( F - 32) / 1.8");
-                /*value = String.valueOf(TemperatureType.FahrenheitToCelsius(inputValue));
-                mResultTextView.setText(value);*/
             }
 
             if(mType6.isChecked()){
-                mResultTextView.setText(String.valueOf(TemperatureType.FahrenheitToFahrenheit(inputValue)));
+                mResultTextView.setText(String.format("%.2f", TemperatureType.FahrenheitToFahrenheit(inputValue)));
                 mFormulaTextView.setText("Fahrenheit = Fahrenheit");
-                /*value = String.valueOf(TemperatureType.FahrenheitToFahrenheit(inputValue));
-                mResultTextView.setText(value);*/
             }
 
             if(mType7.isChecked()){
-                mResultTextView.setText(String.valueOf(TemperatureType.FahrenheitToKelvin(inputValue)));
+                mResultTextView.setText(String.format("%.2f", TemperatureType.FahrenheitToKelvin(inputValue)));
                 mFormulaTextView.setText("K = ( F + 459.67) / 1.8");
-                /*value = String.valueOf(TemperatureType.FahrenheitToKelvin(inputValue));
-                mResultTextView.setText(value);*/
             }
 
             if(mType8.isChecked()){
-                mResultTextView.setText(String.valueOf(TemperatureType.FahrenheitToRankin(inputValue)));
+                mResultTextView.setText(String.format("%.2f", TemperatureType.FahrenheitToRankin(inputValue)));
                 mFormulaTextView.setText("Ra =  F + 459.67");
-               /* value = String.valueOf(TemperatureType.FahrenheitToRankin(inputValue));
-                mResultTextView.setText(value);*/
             }
 
 
@@ -247,32 +149,24 @@ public class TemperatureConverter extends AppCompatActivity {
         if(mType3.isChecked())
         {
             if(mType5.isChecked()){
-                mResultTextView.setText(String.valueOf(TemperatureType.KelvinToCelsius(inputValue)));
+                mResultTextView.setText(String.format("%.2f", TemperatureType.KelvinToCelsius(inputValue)));
                 mFormulaTextView.setText("C = K - 273.15");
-                /*value = String.valueOf(TemperatureType.KelvinToCelsius(inputValue));
-                mResultTextView.setText(value);*/
             }
 
             if(mType6.isChecked()){
-                mResultTextView.setText(String.valueOf(TemperatureType.KelvinToFahrenheit(inputValue)));
+                mResultTextView.setText(String.format("%.2f", TemperatureType.KelvinToFahrenheit(inputValue)));
                 mFormulaTextView.setText("F = K × 1.8 - 459.67");
-                /*value = String.valueOf(TemperatureType.KelvinToFahrenheit(inputValue));
-                mResultTextView.setText(value);*/
             }
 
 
             if(mType7.isChecked()){
-                mResultTextView.setText(String.valueOf(TemperatureType.KelvinToKelvin(inputValue)));
+                mResultTextView.setText(String.format("%.2f", TemperatureType.KelvinToKelvin(inputValue)));
                 mFormulaTextView.setText("Kelvin = Kelvin");
-                /*value = String.valueOf(TemperatureType.KelvinToKelvin(inputValue));
-                mResultTextView.setText(value);*/
             }
 
             if(mType8.isChecked()){
-                mResultTextView.setText(String.valueOf(TemperatureType.KelvinToRankin(inputValue)));
+                mResultTextView.setText(String.format("%.2f", TemperatureType.KelvinToRankin(inputValue)));
                 mFormulaTextView.setText("Ra = K × 1.8");
-                /*value = String.valueOf(TemperatureType.KelvinToRankin(inputValue));
-                mResultTextView.setText(value);*/
             }
 
 
@@ -282,32 +176,24 @@ public class TemperatureConverter extends AppCompatActivity {
         if(mType4.isChecked())
         {
             if(mType5.isChecked()){
-                mResultTextView.setText(String.valueOf(TemperatureType.RankinToCelsius(inputValue)));
+                mResultTextView.setText(String.format("%.2f", TemperatureType.RankinToCelsius(inputValue)));
                 mFormulaTextView.setText("C = ( Ra - 32 - 459.67) / 1.8");
-                /*value = String.valueOf(TemperatureType.RankinToCelsius(inputValue));
-                mResultTextView.setText(value);*/
             }
 
             if(mType6.isChecked()){
-                mResultTextView.setText(String.valueOf(TemperatureType.RankinToFahrenheit(inputValue)));
+                mResultTextView.setText(String.format("%.2f", TemperatureType.RankinToFahrenheit(inputValue)));
                 mFormulaTextView.setText("F =  Ra - 459.67");
-                /*value = String.valueOf(TemperatureType.RankinToFahrenheit(inputValue));
-                mResultTextView.setText(value);*/
             }
 
 
             if(mType7.isChecked()){
-                mResultTextView.setText(String.valueOf(TemperatureType.RankinToKelvin(inputValue)));
+                mResultTextView.setText(String.format("%.2f", TemperatureType.RankinToKelvin(inputValue)));
                 mFormulaTextView.setText("K =  Ra / 1.8");
-                /*value = String.valueOf(TemperatureType.RankinToKelvin(inputValue));
-                mResultTextView.setText(value);*/
             }
 
             if(mType8.isChecked()){
-                mResultTextView.setText(String.valueOf(TemperatureType.RankinToRankin(inputValue)));
+                mResultTextView.setText(String.format("%.2f", TemperatureType.RankinToRankin(inputValue)));
                 mFormulaTextView.setText("Rankin = Rankin");
-                /*value = String.valueOf(TemperatureType.RankinToRankin(inputValue));
-                mResultTextView.setText(value);*/
             }
 
 
@@ -320,23 +206,9 @@ public class TemperatureConverter extends AppCompatActivity {
         // Save the values you need from your textview into "outState"-object
         super.onSaveInstanceState(outState);
 
-   /*     outState.putBoolean("Type1RadioButton",mType1.isChecked());
-        outState.putBoolean("Type2RadioButton",mType2.isChecked());
-        outState.putBoolean("Type3RadioButton",mType3.isChecked());
-        outState.putBoolean("Type4RadioButton",mType4.isChecked());
-        outState.putBoolean("Type5RadioButton",mType5.isChecked());
-        outState.putBoolean("Type6RadioButton",mType6.isChecked());
-        outState.putBoolean("Type7RadioButton",mType7.isChecked());
-        outState.putBoolean("Type8RadioButton",mType8.isChecked());*/
-
-
-       // outState.putDouble("INPUTVALUE", inputValue);
-
-
-     //   outState.putBoolean("sp",sp.isChecked());
-
 
        outState.putDouble("savedNumber", inputValue);
+
     }
 
 
@@ -347,29 +219,12 @@ public class TemperatureConverter extends AppCompatActivity {
         super.onRestoreInstanceState(savedInstanceState);
         // Read values from the "savedInstanceState"-object and put them in your textview
 
-
-    //    ( mType1.isChecked()) = savedInstanceState.getBoolean("Type1RadioButton");
-
         inputValue = savedInstanceState.getDouble("savedNumber");
 
-
         Select();
-       //34 mResultTextView.setText(value);
-
-       // mFormulaTextView.setText("Celsius = Celsius");
-
-
 
     }
 
-
-
-   /* @Override
-    public void onSaveInstanceState(Bundle savedInstanceState){
-        super.onSaveInstanceState(savedInstanceState);
-        Log.i(TAG, "onSaveInstanceState");
-
-    }*/
 
 
     @Override

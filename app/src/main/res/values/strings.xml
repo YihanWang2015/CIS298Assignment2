@@ -13,9 +13,9 @@
     <string name="convert_title_text">Convert:</string>
 
 
-    <string name="result_text">resultText</string>
+    <string name="result_text"> </string>
 
-    <string name="formula_text">formulaText</string>
+    <string name="formula_text"> </string>
 
 
     <string name="reminder_toast">Enter a number first.</string>
