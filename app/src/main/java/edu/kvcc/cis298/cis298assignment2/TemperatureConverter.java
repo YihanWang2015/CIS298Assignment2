@@ -91,6 +91,8 @@ public class TemperatureConverter extends AppCompatActivity {
         setContentView(R.layout.activity_temperature_converter);
 
         mResultTextView =(TextView)findViewById(R.id.result_text);
+        mFormulaTextView=(TextView)findViewById(R.id.formula_text);
+
         userInputText = (EditText) findViewById(R.id.editText);
 
         mFromRadioGroup = (RadioGroup) findViewById(R.id.from_group);
@@ -131,16 +133,110 @@ public class TemperatureConverter extends AppCompatActivity {
 
                 if(mType1.isChecked())
                 {
+                    if(mType5.isChecked()){
+                        mResultTextView.setText(String.valueOf(TemperatureType.CelsiusToCelsius(inputValue)));
+                        mFormulaTextView.setText("Celsius = Celsius");
+                    }
+
+                    if(mType6.isChecked()){
+                        mResultTextView.setText(String.valueOf(TemperatureType.CelsiusToFahrenheit(inputValue)));
+                        mFormulaTextView.setText(" F =  C × 1.8 + 32");
+                    }
+
                     if(mType7.isChecked()){
                         mResultTextView.setText(String.valueOf(TemperatureType.CelsiusToKelvin(inputValue)));
+                        mFormulaTextView.setText("K = C  + 273.15");
                     }
 
                     if(mType8.isChecked()){
                          mResultTextView.setText(String.valueOf(TemperatureType.CelsiusToRankin(inputValue)));
+                         mFormulaTextView.setText("Ra =  C × 1.8 + 32 + 459.67");
                     }
 
                 }
 
+
+
+                if(mType2.isChecked())
+                {
+                    if(mType5.isChecked()){
+                        mResultTextView.setText(String.valueOf(TemperatureType.FahrenheitToCelsius(inputValue)));
+                        mFormulaTextView.setText("C = ( F - 32) / 1.8");
+                    }
+
+                    if(mType6.isChecked()){
+                        mResultTextView.setText(String.valueOf(TemperatureType.FahrenheitToFahrenheit(inputValue)));
+                        mFormulaTextView.setText("Fahrenheit = Fahrenheit");
+                    }
+
+                    if(mType7.isChecked()){
+                        mResultTextView.setText(String.valueOf(TemperatureType.FahrenheitToKelvin(inputValue)));
+                        mFormulaTextView.setText("K = ( F + 459.67) / 1.8");
+                    }
+
+                    if(mType8.isChecked()){
+                        mResultTextView.setText(String.valueOf(TemperatureType.FahrenheitToRankin(inputValue)));
+                        mFormulaTextView.setText("Ra =  F + 459.67");
+                    }
+
+
+                }
+
+
+
+                if(mType3.isChecked())
+                {
+                    if(mType5.isChecked()){
+                        mResultTextView.setText(String.valueOf(TemperatureType.KelvinToCelsius(inputValue)));
+                        mFormulaTextView.setText("C = K - 273.15");
+                    }
+
+                    if(mType6.isChecked()){
+                        mResultTextView.setText(String.valueOf(TemperatureType.KelvinToFahrenheit(inputValue)));
+                        mFormulaTextView.setText("F = K × 1.8 - 459.67");
+                    }
+
+
+                    if(mType7.isChecked()){
+                        mResultTextView.setText(String.valueOf(TemperatureType.KelvinToKelvin(inputValue)));
+                        mFormulaTextView.setText("Kelvin = Kelvin");
+                    }
+
+                    if(mType8.isChecked()){
+                        mResultTextView.setText(String.valueOf(TemperatureType.KelvinToRankin(inputValue)));
+                        mFormulaTextView.setText("Ra = K × 1.8");
+                    }
+
+
+                }
+
+
+
+                if(mType4.isChecked())
+                {
+                    if(mType5.isChecked()){
+                        mResultTextView.setText(String.valueOf(TemperatureType.RankinToCelsius(inputValue)));
+                        mFormulaTextView.setText("C = ( Ra - 32 - 459.67) / 1.8");
+                    }
+
+                    if(mType6.isChecked()){
+                        mResultTextView.setText(String.valueOf(TemperatureType.RankinToFahrenheit(inputValue)));
+                        mFormulaTextView.setText("F =  Ra - 459.67");
+                    }
+
+
+                    if(mType7.isChecked()){
+                        mResultTextView.setText(String.valueOf(TemperatureType.RankinToKelvin(inputValue)));
+                        mFormulaTextView.setText("K =  Ra / 1.8");
+                    }
+
+                    if(mType8.isChecked()){
+                        mResultTextView.setText(String.valueOf(TemperatureType.RankinToRankin(inputValue)));
+                        mFormulaTextView.setText("Rankin = Rankin");
+                    }
+
+
+                }
 
             }
 
@@ -155,7 +251,7 @@ public class TemperatureConverter extends AppCompatActivity {
 
 
 
-    }//onCreate
+    }//onCreate100
 
 
 

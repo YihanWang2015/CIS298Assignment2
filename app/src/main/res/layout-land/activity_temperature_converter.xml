@@ -1,0 +1,149 @@
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="fill_vertical"
+    android:orientation="vertical"
+    android:weightSum="1">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/convert_title_text"
+        android:id="@+id/convert_title_text" />
+
+    <EditText
+        android:layout_width="181dp"
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal"
+        android:ems="10"
+        android:id="@+id/editText" />
+
+    </LinearLayout>
+
+
+
+        <RadioGroup
+
+            android:orientation="horizontal"
+            android:layout_width="404dp"
+            android:layout_height="42dp"
+            android:id="@+id/from_group">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="From"
+                android:id="@+id/textView2" />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Celsius"
+                android:id="@+id/type_1"
+                />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Fahrenheit"
+                android:id="@+id/type_2"
+                />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Kelvin"
+                android:id="@+id/type_3"
+                />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Rankin"
+                android:id="@+id/type_4"
+                />
+
+        </RadioGroup>
+
+        <RadioGroup
+            android:orientation="horizontal"
+            android:layout_width="403dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/to_group">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="To     "
+                android:id="@+id/textView3" />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Celsius"
+                android:id="@+id/type_5"
+                />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Fahrenheit"
+                android:id="@+id/type_6"
+                />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Kelvin"
+                android:id="@+id/type_7"
+                />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Rankin"
+                android:id="@+id/type_8"
+                />
+
+        </RadioGroup>
+
+
+
+    <Button
+        android:text="@string/covert_button"
+        android:id="@+id/convert_button"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="403dp"
+        android:layout_height="wrap_content" />
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="43dp"
+
+        android:gravity="center"
+        android:text="@string/result_text"
+        android:id="@+id/result_text"
+        android:layout_weight="0.41" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="39dp"
+
+        android:gravity="center"
+        android:text="@string/formula_text"
+        android:id="@+id/formula_text"
+        android:layout_weight="0.27" />
+
+
+</LinearLayout>
