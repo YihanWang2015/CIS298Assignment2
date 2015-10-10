@@ -1,3 +1,19 @@
+/*
+Name:Yihan Wang
+Assignment: CIS_298_Assignment_2
+Description:
+
+The temperature converter application allows users to freely convert
+ from one temperature type to another by inputting a original decimal
+ number and selecting one temperature type from the "From" radio group
+ and selecting another temperature type from the "To" radio group.
+  At last, by clicking the "CONVERT" button, users can get their
+  result along with the used formula in the textView area.
+
+* */
+
+
+
 package edu.kvcc.cis298.cis298assignment2;
 
 /**

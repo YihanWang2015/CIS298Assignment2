@@ -1,7 +1,21 @@
+<!--
+Name: Yihan Wang
+Assignment: CIS_298_Assignment_2
+Description:
+
+The temperature converter application allows users to freely convert
+ from one temperature type to another by inputting a original decimal
+ number and selecting one temperature type from the "From" radio group
+ and selecting another temperature type from the "To" radio group.
+  At last, by clicking the "CONVERT" button, users can get their
+  result along with the used formula in the textView area.
+
+-->
+
+
+
 <resources>
     <string name="app_name">CIS298Assignment2</string>
-
-
 
 
     <string name="action_settings">Settings</string>
@@ -20,31 +34,15 @@
 
     <string name="reminder_toast">Enter a number first.</string>
 
+    <string name="select_to_toast">Select a To radio button.</string>
+
+    <string name="select_from_toast">Select a From radio button</string>
+
     <string name="from_group"></string>
+
     <string name="to_group"></string>
 
-    <string name="type_1_formula">celsius = celsius</string>
-    <string name="type_2_formula">Fahrenheit = celsius * 1.8 + 32</string>
-    <string name="type_3_formula">kelvin = celsius + 237.15</string>
-    <string name="type_4_formula">rankin = celsius * 1.8 + 32 + 459.67</string>
 
-
-    <string name="type_5_formula">celsius = (fahrenheit - 32) / 1.8</string>
-    <string name="type_6_formula">fahrenheit = fahrenheit</string>
-    <string name="type_7_formula">kelvin = (fahrenheit + 459.67) / 1.8</string>
-    <string name="type_8_formula">rankin =fahrenheit + 459.67</string>
-
-
-    <string name="type_9_formula">celsius = kelvin-273.15</string>
-    <string name="type_10_formula">Fahrenheit = kelvin * 1.8 - 459.67</string>
-    <string name="type_11_formula">kelvin = kelvin</string>
-    <string name="type_12_formula">rankin = kelvin * 1.8</string>
-
-
-    <string name="type_13_formula">celsius = ( rankin - 32 - 459.67) / 1.8</string>
-    <string name="type_14_formula">kelvin = Fahrenheit = rankin - 459.67</string>
-    <string name="type_15_formula">rankin * 1.8</string>
-    <string name="type_16_formula">rankin = rankin</string>
 
 
 </resources>
