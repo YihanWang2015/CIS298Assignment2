@@ -2,6 +2,7 @@ package edu.kvcc.cis298.cis298assignment2;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -15,6 +16,15 @@ import android.widget.Toast;
 import org.w3c.dom.Text;
 
 public class TemperatureConverter extends AppCompatActivity {
+
+    private TemperatureType[] mFormulaBank = new TemperatureType[20];
+
+//    private TemperatureType1 = new TemperatureType[R.string.typ]
+
+
+
+    private static final String TAG = "TemperatureConverter";
+    private static final String KEY_INDEX = "index";
 
 
     private RadioGroup mFromRadioGroup;
@@ -38,6 +48,9 @@ public class TemperatureConverter extends AppCompatActivity {
 
     private RadioButton fromRadioButton;
 
+    private Double inputValue;
+
+   // private String value;
 
 /*    public void onRadioButtonClicked(View view){
 
@@ -88,7 +101,10 @@ public class TemperatureConverter extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.d(TAG, "onCreate(Bundle) called");
         setContentView(R.layout.activity_temperature_converter);
+
+
 
         mResultTextView =(TextView)findViewById(R.id.result_text);
         mFormulaTextView=(TextView)findViewById(R.id.formula_text);
@@ -129,114 +145,12 @@ public class TemperatureConverter extends AppCompatActivity {
                 mResultTextView.setText(fromRadioButton.getText());*/
 
 
-                 double inputValue = Double.parseDouble(userInputText.getText().toString());
-
-                if(mType1.isChecked())
-                {
-                    if(mType5.isChecked()){
-                        mResultTextView.setText(String.valueOf(TemperatureType.CelsiusToCelsius(inputValue)));
-                        mFormulaTextView.setText("Celsius = Celsius");
-                    }
-
-                    if(mType6.isChecked()){
-                        mResultTextView.setText(String.valueOf(TemperatureType.CelsiusToFahrenheit(inputValue)));
-                        mFormulaTextView.setText(" F =  C × 1.8 + 32");
-                    }
-
-                    if(mType7.isChecked()){
-                        mResultTextView.setText(String.valueOf(TemperatureType.CelsiusToKelvin(inputValue)));
-                        mFormulaTextView.setText("K = C  + 273.15");
-                    }
-
-                    if(mType8.isChecked()){
-                         mResultTextView.setText(String.valueOf(TemperatureType.CelsiusToRankin(inputValue)));
-                         mFormulaTextView.setText("Ra =  C × 1.8 + 32 + 459.67");
-                    }
-
-                }
+              //   double inputValue = Double.parseDouble(userInputText.getText().toString());
 
 
+                inputValue = Double.parseDouble(userInputText.getText().toString());
 
-                if(mType2.isChecked())
-                {
-                    if(mType5.isChecked()){
-                        mResultTextView.setText(String.valueOf(TemperatureType.FahrenheitToCelsius(inputValue)));
-                        mFormulaTextView.setText("C = ( F - 32) / 1.8");
-                    }
-
-                    if(mType6.isChecked()){
-                        mResultTextView.setText(String.valueOf(TemperatureType.FahrenheitToFahrenheit(inputValue)));
-                        mFormulaTextView.setText("Fahrenheit = Fahrenheit");
-                    }
-
-                    if(mType7.isChecked()){
-                        mResultTextView.setText(String.valueOf(TemperatureType.FahrenheitToKelvin(inputValue)));
-                        mFormulaTextView.setText("K = ( F + 459.67) / 1.8");
-                    }
-
-                    if(mType8.isChecked()){
-                        mResultTextView.setText(String.valueOf(TemperatureType.FahrenheitToRankin(inputValue)));
-                        mFormulaTextView.setText("Ra =  F + 459.67");
-                    }
-
-
-                }
-
-
-
-                if(mType3.isChecked())
-                {
-                    if(mType5.isChecked()){
-                        mResultTextView.setText(String.valueOf(TemperatureType.KelvinToCelsius(inputValue)));
-                        mFormulaTextView.setText("C = K - 273.15");
-                    }
-
-                    if(mType6.isChecked()){
-                        mResultTextView.setText(String.valueOf(TemperatureType.KelvinToFahrenheit(inputValue)));
-                        mFormulaTextView.setText("F = K × 1.8 - 459.67");
-                    }
-
-
-                    if(mType7.isChecked()){
-                        mResultTextView.setText(String.valueOf(TemperatureType.KelvinToKelvin(inputValue)));
-                        mFormulaTextView.setText("Kelvin = Kelvin");
-                    }
-
-                    if(mType8.isChecked()){
-                        mResultTextView.setText(String.valueOf(TemperatureType.KelvinToRankin(inputValue)));
-                        mFormulaTextView.setText("Ra = K × 1.8");
-                    }
-
-
-                }
-
-
-
-                if(mType4.isChecked())
-                {
-                    if(mType5.isChecked()){
-                        mResultTextView.setText(String.valueOf(TemperatureType.RankinToCelsius(inputValue)));
-                        mFormulaTextView.setText("C = ( Ra - 32 - 459.67) / 1.8");
-                    }
-
-                    if(mType6.isChecked()){
-                        mResultTextView.setText(String.valueOf(TemperatureType.RankinToFahrenheit(inputValue)));
-                        mFormulaTextView.setText("F =  Ra - 459.67");
-                    }
-
-
-                    if(mType7.isChecked()){
-                        mResultTextView.setText(String.valueOf(TemperatureType.RankinToKelvin(inputValue)));
-                        mFormulaTextView.setText("K =  Ra / 1.8");
-                    }
-
-                    if(mType8.isChecked()){
-                        mResultTextView.setText(String.valueOf(TemperatureType.RankinToRankin(inputValue)));
-                        mFormulaTextView.setText("Rankin = Rankin");
-                    }
-
-
-                }
+                Select();
 
             }
 
@@ -253,7 +167,235 @@ public class TemperatureConverter extends AppCompatActivity {
 
     }//onCreate100
 
+    private void Select() {
+        if(mType1.isChecked())
+        {
+            if(mType5.isChecked()){
+                mResultTextView.setText(String.valueOf(TemperatureType.CelsiusToCelsius(inputValue)));
+                mFormulaTextView.setText("Celsius = Celsius");
 
+               /* value = String.valueOf(TemperatureType.CelsiusToCelsius(inputValue));
+                mResultTextView.setText(value);*/
+
+            }
+
+            if(mType6.isChecked()){
+                mResultTextView.setText(String.valueOf(TemperatureType.CelsiusToFahrenheit(inputValue)));
+                mFormulaTextView.setText(" F =  C × 1.8 + 32");
+
+                /*value = String.valueOf(TemperatureType.CelsiusToFahrenheit(inputValue));
+                mResultTextView.setText(value);*/
+
+
+
+            }
+
+            if(mType7.isChecked()){
+                mResultTextView.setText(String.valueOf(TemperatureType.CelsiusToKelvin(inputValue)));
+                mFormulaTextView.setText("K = C  + 273.15");
+
+               /* value = String.valueOf(TemperatureType.CelsiusToKelvin(inputValue));
+                mResultTextView.setText(value);*/
+            }
+
+            if(mType8.isChecked()){
+                 mResultTextView.setText(String.valueOf(TemperatureType.CelsiusToRankin(inputValue)));
+                 mFormulaTextView.setText("Ra =  C × 1.8 + 32 + 459.67");
+
+                /*value = String.valueOf(TemperatureType.CelsiusToRankin(inputValue));
+                mResultTextView.setText(value);*/
+
+            }
+
+        }
+
+
+        if(mType2.isChecked())
+        {
+            if(mType5.isChecked()){
+                mResultTextView.setText(String.valueOf(TemperatureType.FahrenheitToCelsius(inputValue)));
+                mFormulaTextView.setText("C = ( F - 32) / 1.8");
+                /*value = String.valueOf(TemperatureType.FahrenheitToCelsius(inputValue));
+                mResultTextView.setText(value);*/
+            }
+
+            if(mType6.isChecked()){
+                mResultTextView.setText(String.valueOf(TemperatureType.FahrenheitToFahrenheit(inputValue)));
+                mFormulaTextView.setText("Fahrenheit = Fahrenheit");
+                /*value = String.valueOf(TemperatureType.FahrenheitToFahrenheit(inputValue));
+                mResultTextView.setText(value);*/
+            }
+
+            if(mType7.isChecked()){
+                mResultTextView.setText(String.valueOf(TemperatureType.FahrenheitToKelvin(inputValue)));
+                mFormulaTextView.setText("K = ( F + 459.67) / 1.8");
+                /*value = String.valueOf(TemperatureType.FahrenheitToKelvin(inputValue));
+                mResultTextView.setText(value);*/
+            }
+
+            if(mType8.isChecked()){
+                mResultTextView.setText(String.valueOf(TemperatureType.FahrenheitToRankin(inputValue)));
+                mFormulaTextView.setText("Ra =  F + 459.67");
+               /* value = String.valueOf(TemperatureType.FahrenheitToRankin(inputValue));
+                mResultTextView.setText(value);*/
+            }
+
+
+        }
+
+
+        if(mType3.isChecked())
+        {
+            if(mType5.isChecked()){
+                mResultTextView.setText(String.valueOf(TemperatureType.KelvinToCelsius(inputValue)));
+                mFormulaTextView.setText("C = K - 273.15");
+                /*value = String.valueOf(TemperatureType.KelvinToCelsius(inputValue));
+                mResultTextView.setText(value);*/
+            }
+
+            if(mType6.isChecked()){
+                mResultTextView.setText(String.valueOf(TemperatureType.KelvinToFahrenheit(inputValue)));
+                mFormulaTextView.setText("F = K × 1.8 - 459.67");
+                /*value = String.valueOf(TemperatureType.KelvinToFahrenheit(inputValue));
+                mResultTextView.setText(value);*/
+            }
+
+
+            if(mType7.isChecked()){
+                mResultTextView.setText(String.valueOf(TemperatureType.KelvinToKelvin(inputValue)));
+                mFormulaTextView.setText("Kelvin = Kelvin");
+                /*value = String.valueOf(TemperatureType.KelvinToKelvin(inputValue));
+                mResultTextView.setText(value);*/
+            }
+
+            if(mType8.isChecked()){
+                mResultTextView.setText(String.valueOf(TemperatureType.KelvinToRankin(inputValue)));
+                mFormulaTextView.setText("Ra = K × 1.8");
+                /*value = String.valueOf(TemperatureType.KelvinToRankin(inputValue));
+                mResultTextView.setText(value);*/
+            }
+
+
+        }
+
+
+        if(mType4.isChecked())
+        {
+            if(mType5.isChecked()){
+                mResultTextView.setText(String.valueOf(TemperatureType.RankinToCelsius(inputValue)));
+                mFormulaTextView.setText("C = ( Ra - 32 - 459.67) / 1.8");
+                /*value = String.valueOf(TemperatureType.RankinToCelsius(inputValue));
+                mResultTextView.setText(value);*/
+            }
+
+            if(mType6.isChecked()){
+                mResultTextView.setText(String.valueOf(TemperatureType.RankinToFahrenheit(inputValue)));
+                mFormulaTextView.setText("F =  Ra - 459.67");
+                /*value = String.valueOf(TemperatureType.RankinToFahrenheit(inputValue));
+                mResultTextView.setText(value);*/
+            }
+
+
+            if(mType7.isChecked()){
+                mResultTextView.setText(String.valueOf(TemperatureType.RankinToKelvin(inputValue)));
+                mFormulaTextView.setText("K =  Ra / 1.8");
+                /*value = String.valueOf(TemperatureType.RankinToKelvin(inputValue));
+                mResultTextView.setText(value);*/
+            }
+
+            if(mType8.isChecked()){
+                mResultTextView.setText(String.valueOf(TemperatureType.RankinToRankin(inputValue)));
+                mFormulaTextView.setText("Rankin = Rankin");
+                /*value = String.valueOf(TemperatureType.RankinToRankin(inputValue));
+                mResultTextView.setText(value);*/
+            }
+
+
+        }
+    }
+
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        // Save the values you need from your textview into "outState"-object
+        super.onSaveInstanceState(outState);
+
+   /*     outState.putBoolean("Type1RadioButton",mType1.isChecked());
+        outState.putBoolean("Type2RadioButton",mType2.isChecked());
+        outState.putBoolean("Type3RadioButton",mType3.isChecked());
+        outState.putBoolean("Type4RadioButton",mType4.isChecked());
+        outState.putBoolean("Type5RadioButton",mType5.isChecked());
+        outState.putBoolean("Type6RadioButton",mType6.isChecked());
+        outState.putBoolean("Type7RadioButton",mType7.isChecked());
+        outState.putBoolean("Type8RadioButton",mType8.isChecked());*/
+
+
+       // outState.putDouble("INPUTVALUE", inputValue);
+
+
+     //   outState.putBoolean("sp",sp.isChecked());
+
+
+       outState.putDouble("savedNumber", inputValue);
+    }
+
+
+
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        // Read values from the "savedInstanceState"-object and put them in your textview
+
+
+    //    ( mType1.isChecked()) = savedInstanceState.getBoolean("Type1RadioButton");
+
+        inputValue = savedInstanceState.getDouble("savedNumber");
+
+
+        Select();
+       //34 mResultTextView.setText(value);
+
+       // mFormulaTextView.setText("Celsius = Celsius");
+
+
+
+    }
+
+
+
+   /* @Override
+    public void onSaveInstanceState(Bundle savedInstanceState){
+        super.onSaveInstanceState(savedInstanceState);
+        Log.i(TAG, "onSaveInstanceState");
+
+    }*/
+
+
+    @Override
+    public void onStart(){
+        super.onStart();
+        Log.d(TAG, "onStart() called");
+    }
+
+    @Override
+    public void onPause(){
+        super.onPause();
+        Log.d(TAG, "onPause() called");
+    }
+
+
+    @Override
+    public void onStop(){
+        super.onStop();
+        Log.d(TAG, "onStop() called");
+    }
+
+    @Override
+    public void onDestroy(){
+        super.onDestroy();
+        Log.d(TAG, "onDestroy() called");
+    }
 
 
 

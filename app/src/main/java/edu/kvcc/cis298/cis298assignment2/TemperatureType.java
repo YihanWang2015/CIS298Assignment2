@@ -75,6 +75,19 @@ public class TemperatureType {
         return rankin * 1.8;
     }
 
+
+    private int mFormulaId;
+
+//----------------------------------------------------------
+  //  private double mEditTextInput;
+
+    //private double mFinalResult;
+
+
+
+
+
+
 }
 
 
